@@ -1,8 +1,8 @@
---ldp:function missing-items
+--ldp:function missing_items
 
-DROP FUNCTION IF EXISTS missing-items;
+DROP FUNCTION IF EXISTS missing_items;
 
-CREATE FUNCTION missing-items()
+CREATE FUNCTION missing_items()
 RETURNS TABLE(
     title TEXT,
     barcode TEXT,
@@ -35,3 +35,4 @@ $$
 LANGUAGE SQL
 STABLE
 PARALLEL SAFE;
+
