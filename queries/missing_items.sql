@@ -2,7 +2,8 @@
 
 DROP FUNCTION IF EXISTS missing_items;
 
-CREATE FUNCTION missing_items()
+CREATE FUNCTION missing_items(start_date DATE DEFAULT (CURRENT_DATE - INTERVAL '5 years'), 
+                              end_date DATE DEFAULT CURRENT_DATE)
 RETURNS TABLE(
     title TEXT,
     barcode TEXT,
@@ -27,10 +28,11 @@ SELECT
     ie.status_name AS status_name,
     ie.status_date::DATE AS status_date,
     ie.updated_date::DATE
-FROM public.inventory_items AS ii
-LEFT JOIN folio_reporting.items_holdings_instances AS ihi ON ii.id = ihi.item_id
-LEFT JOIN folio_reporting.item_ext AS ie ON ii.id = ie.item_id
-WHERE ie.status_name ~ '.*issing.*' OR ie.status_name ~ '.*ost.*'
+FROM folio_reporting.items_holdings_instances AS ihi
+LEFT JOIN folio_reporting.item_ext AS ie ON ihi.item_id = ie.item_id
+WHERE ie.status_name ~* 'missing|lost'
+AND status_date BETWEEN COALESCE(start_date, CURRENT_DATE - INTERVAL '5 years') 
+                    AND COALESCE(end_date, CURRENT_DATE)
 $$
 LANGUAGE SQL
 STABLE
