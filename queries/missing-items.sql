@@ -1,8 +1,8 @@
---ldp:function missing_lost_items
+--ldp:function missing-items
 
-DROP FUNCTION IF EXISTS missing_lost_items;
+DROP FUNCTION IF EXISTS missing-items;
 
-CREATE FUNCTION missing_lost_items()
+CREATE FUNCTION missing-items()
 RETURNS TABLE(
     title TEXT,
     barcode TEXT,
