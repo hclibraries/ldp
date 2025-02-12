@@ -1,20 +1,36 @@
 --ldp:function loan_count
 
-DROP FUNCTION IF EXISTS loan_count;
+DROP FUNCTION IF EXISTS missing_lost_items;
 
-CREATE FUNCTION loan_count (
-	start_date date DEFAULT '2000-01-01',
-	end_date date DEFAULT '2050-01-01')
+CREATE FUNCTION missing_lost_items()
 RETURNS TABLE(
-	item_id uuid,
-	loan_count integer) AS
+    title TEXT,
+    barcode TEXT,
+    effective_location_name TEXT,
+    effective_call_number TEXT,
+    volume TEXT,
+    enumeration TEXT,
+    item_hrid TEXT,
+    status_name TEXT,
+    status_date TIMESTAMP,
+    updated_date TIMESTAMP
+) AS
 $$
-SELECT item_id,
-	   count(*) AS loan_count
-	 FROM folio_circulation.loan__t
-	 WHERE loan_date::DATE >= start_date
-         AND loan_date::DATE < end_date
-	 GROUP BY item_id
+SELECT
+    ihi.title,
+    ie.barcode,
+    ie.effective_location_name,
+    ie.effective_call_number,
+    ie.volume,
+    ie.enumeration,
+    ie.item_hrid,
+    ie.status__name AS status_name,
+    ie.status__date AS status_date,
+    ie.updated_date
+FROM public.inventory_items AS ii
+LEFT JOIN folio_reporting.items_holdings_instances AS ihi ON ii.id = ihi.item_id
+LEFT JOIN folio_reporting.item_ext AS ie ON ii.id = ie.item_id
+WHERE ie.status__name ~ '.*issing.*' OR ie.status__name ~ '.*ost.*'
 $$
 LANGUAGE SQL
 STABLE
