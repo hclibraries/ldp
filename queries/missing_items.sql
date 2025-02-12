@@ -24,13 +24,13 @@ SELECT
     ie.volume,
     ie.enumeration,
     ie.item_hrid,
-    ie.status__name AS status_name,
-    ie.status__date::DATE AS status_date,
+    ie.status_name AS status_name,
+    ie.status_date::DATE AS status_date,
     ie.updated_date::DATE
 FROM public.inventory_items AS ii
 LEFT JOIN folio_reporting.items_holdings_instances AS ihi ON ii.id = ihi.item_id
 LEFT JOIN folio_reporting.item_ext AS ie ON ii.id = ie.item_id
-WHERE ie.status__name ~ '.*issing.*' OR ie.status__name ~ '.*ost.*'
+WHERE ie.status_name ~ '.*issing.*' OR ie.status_name ~ '.*ost.*'
 $$
 LANGUAGE SQL
 STABLE
