@@ -1,4 +1,4 @@
---ldp:function loan_count
+--ldp:function missing_lost_items
 
 DROP FUNCTION IF EXISTS missing_lost_items;
 
