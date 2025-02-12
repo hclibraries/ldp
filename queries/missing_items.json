@@ -8,14 +8,14 @@
             "displayName": "Earliest date of user creation",
             "type": "date",
             "required": false,
-            "disabled": true
+            "disabled": true,
         },
         {
             "name": "end_date",
             "displayName": "Latest date of user creation",
             "type": "date",
             "required": false,
-            "disabled": true
+            "disabled": true,
         }
     ]
 }
