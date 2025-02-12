@@ -1,6 +1,6 @@
 {
-    "displayName": "List users by date of creation",
-    "description": "Created by Kurt to exercise mod-ldp's reporting facility",
+    "displayName": "Missing Items",
+    "description": "Created by ...",
     "instructions": "Choose a start and end date for the user-creation period.",
     "parameters": [
         {
