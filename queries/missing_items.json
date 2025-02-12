@@ -1,21 +1,5 @@
 {
     "displayName": "Missing Items",
     "description": "Created by ...",
-    "instructions": "Choose a start and end date for the user-creation period.",
-    "parameters": [
-        {
-            "name": "start_date",
-            "displayName": "Earliest date of user creation",
-            "type": "date",
-            "required": false,
-            "disabled": true
-        },
-        {
-            "name": "end_date",
-            "displayName": "Latest date of user creation",
-            "type": "date",
-            "required": false,
-            "disabled": true
-        }
-    ]
+    "instructions": "Choose a start and end date for the user-creation period."
 }
