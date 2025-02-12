@@ -2,8 +2,8 @@
 
 DROP FUNCTION IF EXISTS missing_items;
 
-CREATE FUNCTION missing_items(start_date DATE DEFAULT (CURRENT_DATE - INTERVAL '2 years'), 
-                              end_date DATE DEFAULT CURRENT_DATE)
+CREATE FUNCTION missing_items(start_date DATE DEFAULT'2000-01-01', 
+                              end_date DATE DEFAULT '2050-01-01')
 RETURNS TABLE(
     title TEXT,
     barcode TEXT,
