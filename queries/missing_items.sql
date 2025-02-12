@@ -2,7 +2,7 @@
 
 DROP FUNCTION IF EXISTS missing_items;
 
-CREATE FUNCTION missing_items(start_date DATE DEFAULT (CURRENT_DATE - INTERVAL '5 years'), 
+CREATE FUNCTION missing_items(start_date DATE DEFAULT (CURRENT_DATE - INTERVAL '2 years'), 
                               end_date DATE DEFAULT CURRENT_DATE)
 RETURNS TABLE(
     title TEXT,
