@@ -1,4 +1,4 @@
---metadb:function loan_count
+--ldp:function loan_count
 
 DROP FUNCTION IF EXISTS loan_count;
 
