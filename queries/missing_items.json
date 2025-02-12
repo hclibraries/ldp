@@ -1,5 +1,6 @@
 {
     "displayName": "Missing Items",
     "description": "Created by ...",
-    "instructions": "Choose a start and end date for the user-creation period."
+    "instructions": "Choose a start and end date for the user-creation period.",
+    "parameters": []
 }
