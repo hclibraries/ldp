@@ -32,6 +32,7 @@ FROM folio_reporting.items_holdings_instances AS ihi
 LEFT JOIN folio_reporting.item_ext AS ie ON ihi.item_id = ie.item_id
 WHERE ie.status_name ~* 'missing|lost'
 AND ie.status_date BETWEEN start_date AND end_date
+ORDER BY ie.status_date DESC;  -- Add sorting by status_date for latest first
 $$
 LANGUAGE SQL
 STABLE
