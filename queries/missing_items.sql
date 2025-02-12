@@ -12,8 +12,8 @@ RETURNS TABLE(
     enumeration TEXT,
     item_hrid TEXT,
     status_name TEXT,
-    status_date TIMESTAMP,
-    updated_date TIMESTAMP
+    status_date DATE,
+    updated_date DATE
 ) AS
 $$
 SELECT
@@ -25,8 +25,8 @@ SELECT
     ie.enumeration,
     ie.item_hrid,
     ie.status__name AS status_name,
-    ie.status__date AS status_date,
-    ie.updated_date
+    ie.status__date::DATE AS status_date,
+    ie.updated_date::DATE
 FROM public.inventory_items AS ii
 LEFT JOIN folio_reporting.items_holdings_instances AS ihi ON ii.id = ihi.item_id
 LEFT JOIN folio_reporting.item_ext AS ie ON ii.id = ie.item_id
