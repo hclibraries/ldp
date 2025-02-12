@@ -1,7 +1,7 @@
 {
     "displayName": "Missing Items",
     "description": "Report of missing and lost items within a date range.",
-    "instructions": "Choose a start and end date for filtering by status date. If no dates are provided, the report will default to the last 5 years.",
+    "instructions": "Choose a start and end date for filtering by status date. If no dates are provided, the report will default to the all records.",
     "parameters": [
         {
             "name": "start_date",
