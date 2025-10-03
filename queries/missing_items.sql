@@ -1,8 +1,6 @@
---ldp:function missing_items
-
+--metadb:function missing_items
 DROP FUNCTION IF EXISTS missing_items;
-
-CREATE FUNCTION missing_items(start_date DATE DEFAULT'2000-01-01', 
+CREATE FUNCTION missing_items(start_date DATE DEFAULT '2000-01-01', 
                               end_date DATE DEFAULT '2050-01-01')
 RETURNS TABLE(
     title TEXT,
@@ -28,8 +26,8 @@ SELECT
     ie.status_name AS status_name,
     ie.status_date::DATE AS status_date,
     ie.updated_date::DATE
-FROM folio_reporting.items_holdings_instances AS ihi
-LEFT JOIN folio_reporting.item_ext AS ie ON ihi.item_id = ie.item_id
+FROM folio_derived.items_holdings_instances AS ihi
+LEFT JOIN folio_derived.item_ext AS ie ON ihi.item_id = ie.item_id
 WHERE ie.status_name ~* 'missing|lost'
 AND ie.status_date BETWEEN start_date AND end_date
 ORDER BY ie.status_date DESC;  -- Add sorting by status_date for latest first
