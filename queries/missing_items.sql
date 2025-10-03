@@ -1,7 +1,7 @@
 --metadb:function missing_items
 DROP FUNCTION IF EXISTS missing_items;
-CREATE FUNCTION missing_items(start_date DATE DEFAULT '01/01/2000', 
-                              end_date DATE DEFAULT '01/01/2050')
+CREATE FUNCTION missing_items(start_date DATE DEFAULT '2000-01-01', 
+                              end_date DATE DEFAULT '2050-01-01')
 RETURNS TABLE(
     title TEXT,
     barcode TEXT,
